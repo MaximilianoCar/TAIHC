@@ -1,0 +1,333 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: "Roboto" !important;
+  overflow: hidden;
+}
+#content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0px;
+}
+iframe {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Sidebar */
+
+#sidebar {
+  box-sizing: border-box;
+  background-color: #ffffff;
+  min-width: 500px;
+  width: 500px;
+  height: 80%;
+  position: fixed;
+  left: -500px;
+  z-index: 1;
+  -moz-transition: -moz-transform 0.3s ease-in-out 0s;
+  -o-transition: -o-transform 0.3s ease-in-out 0s;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  -webkit-transition-delay: 0s;
+  transition: transform 0.3s ease-in-out 0s;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+@media only screen and (max-height: 840px) {
+  #sidebar {
+    height: 100%;
+  }
+}
+
+.sidebar-visible {
+  -ms-transform: translate(500px, 0);
+  -webkit-transform: translate(500px, 0);
+  transform: translate(500px, 0);
+}
+
+.sidebar-hidden {
+  -ms-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+#sidebar .sidebar-close-btn {
+  background-color: #ffffff;
+  color: #ffffff;
+  padding: 2px 12px;
+  border: 0;
+  font-size: 19px;
+  font-weight: 300;
+  float: right;
+}
+
+#sidebar .sidebar-close-btn:hover {
+  background-color: #c9c9c9;
+  color: #000000;
+}
+
+.float {
+  border: 0;
+  position: fixed;
+  width: 60px;
+  height: 80px;
+  background-color: rgb(255, 255, 255);
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  text-align: center;
+}
+
+.float-left {
+  border: 0;
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  background-color: #75b9e6;
+  text-align: center;
+  bottom: 120px;
+  right: 10px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 3px #999;
+}
+
+#sidebtn {
+  width: 60px;
+  height: 80px;
+  background-color: rgb(255, 255, 255);
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  z-index: 1;
+  -moz-transition: -moz-transform 0.3s ease-in-out 0s;
+  -o-transition: -o-transform 0.3s ease-in-out 0s;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  -webkit-transition-delay: 0s;
+  transition: transform 0.3s ease-in-out 0s;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  box-shadow: 10px 0 5px -2px #888;
+}
+
+.rotate-arrow {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidecont {
+  position: fixed;
+  display: flex;
+  align-items: center;
+}
+
+.floating-search-bar {
+  position: fixed;
+  top: 2%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+#search-input {
+  border: none;
+  width: 300px;
+}
+
+#search-input:focus {
+  outline: none;
+}
+
+.search-bar {
+  width: 500px;
+  background-color: white;
+  border-radius: 15px;
+  color: gray;
+  padding: 10px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+}
+
+.suggestion-box {
+  display: none;
+  background-color: white;
+  width: 500px;
+  border-radius: 15px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+ul {
+  padding: 0px;
+  list-style: none;
+  color: gray;
+}
+
+.container-horizontal {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  margin-bottom: 30px;
+}
+
+.container-vertical {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  margin-bottom: 30px;
+}
+
+.container-full {
+  height: 100vh;
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Popups */
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 200ms;
+  visibility: hidden;
+  opacity: 0;
+  &.light {
+    background: rgba(255, 255, 255, 0.5);
+  }
+  .cancel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: default;
+  }
+  &:target {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.popup {
+  min-width: 60%;
+  border-radius: 12px;
+  margin: 75px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #666;
+  width: 300px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+  position: relative;
+  .light & {
+    border-color: #aaa;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .close {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    right: 20px;
+    opacity: 0.8;
+    transition: all 200ms;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #666;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .content {
+    max-height: 400px;
+    overflow: auto;
+  }
+  p {
+    margin: 0 0 1em;
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+#emergency {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+#emergency2 {
+  padding: 0;
+  position: relative;
+  top: -27px;
+}
+
+#emergency3 {
+  text-align: center;
+}
+
+.faq-item {
+  margin-bottom: 10px;
+  border: 1px solid #75b9e6;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  background-color: #f9f9f9;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  color: #303030;
+}
+
+.faq-question i {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.faq-question.active i {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 10px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-answer p {
+  margin: 10px 0;
+}
+
+/* Estilos para el contenedor principal */
+.content {
+  transition: height 0.3s ease; /* Añadir transición para suavizar el cambio de altura */
+}
+
+#help {
+  width: 600px; /* Ajusta el ancho inicial del popup */
+  min-height: 500px; /* Ajusta la altura inicial máxima del popup */
+  padding: 20px; /* Ajusta el padding para darle más espacio al contenido */
+}

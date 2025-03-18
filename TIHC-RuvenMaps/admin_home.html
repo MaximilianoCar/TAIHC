@@ -1,0 +1,2242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script src="js/code.js"></script>
+    <title>Admin - RuVen Maps</title>
+    <style>
+      #anden,
+      #chofer {
+        display: none; /* Ocultar divs inicialmente */
+      }
+    </style>
+  </head>
+  <body style="background-color: antiquewhite">
+    <!-- Barra de busqueda -->
+    <div class="floating-search-bar">
+      <div class="search-bar">
+        <i class="ri-search-line" style="font-size: 20px; color: #75b9e6"></i>
+        <input id="search-input" type="text" placeholder="Buscar..." />
+      </div>
+      <div class="suggestion-box">
+        <ul>
+          <li class="suggestion">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              style="
+                text-align: start;
+                width: 100%;
+                margin-bottom: 10px;
+                border-radius: 12px;
+                border-color: #75b9e6;
+                color: #303030;
+              "
+            >
+              <i class="ri-bus-line" style="color: #75b9e6"></i>Andén 1 - Ruta:
+              Santa Teresa
+            </button>
+          </li>
+          <li class="suggestion">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              style="
+                text-align: start;
+                width: 100%;
+                margin-bottom: 10px;
+                border-radius: 12px;
+                border-color: #75b9e6;
+                color: #303030;
+              "
+            >
+              <i class="ri-bus-line" style="color: #75b9e6"></i>Andén 2 - Ruta:
+              Charallave
+            </button>
+          </li>
+          <li class="suggestion">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              style="
+                text-align: start;
+                width: 100%;
+                margin-bottom: 10px;
+                border-radius: 12px;
+                border-color: #75b9e6;
+                color: #303030;
+              "
+            >
+              <i class="ri-bus-line" style="color: #75b9e6"></i>Andén 5 - Ruta:
+              Guarenas
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidecont">
+      <div id="sidebar" class="sidebar-visible">
+        <div id="sidebartitle">
+          <h3 style="padding: 15px; padding-left: 20px">
+            Terminal de pasajeros: Nuevo Circo
+          </h3>
+        </div>
+        <hr />
+        <!-- Seccion 1 -->
+        <h5 style="padding-left: 10px">Información general</h5>
+        <!-- Descripcion item -->
+        <div class="row" style="padding-left: 15px; padding-bottom: 10px">
+          <div
+            class="col-sm-1"
+            style="display: grid; align-items: center; padding: 5px"
+          >
+            <i
+              class="ri-map-pin-2-line"
+              style="font-size: 35px; color: #75b9e6"
+            ></i>
+          </div>
+          <div class="col">
+            <div class="row"><h6>Ubicacion</h6></div>
+            <div class="row">
+              <div class="col">Av. Bolívar, Caracas 1014, Distrito Capital</div>
+              <div class="col-sm-2">
+                <i class="ri-edit-line" style="color: #75b9e6"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Descripcion item -->
+        <div class="row" style="padding-left: 15px; padding-bottom: 10px">
+          <div
+            class="col-sm-1"
+            style="display: grid; align-items: center; padding: 5px"
+          >
+            <i
+              class="ri-map-pin-time-line"
+              style="font-size: 35px; color: #75b9e6"
+            ></i>
+          </div>
+          <div class="col">
+            <div class="row"><h6>Horario de trabajo</h6></div>
+            <div class="row">
+              <div class="col">5:00 A.M - 6:00 P.M</div>
+              <div class="col-sm-2">
+                <i class="ri-edit-line" style="color: #75b9e6"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Descripcion item -->
+        <div class="row" style="padding-left: 15px; padding-bottom: 10px">
+          <div
+            class="col-sm-1"
+            style="display: grid; align-items: center; padding: 5px"
+          >
+            <i
+              class="ri-user-3-line"
+              style="font-size: 35px; color: #75b9e6"
+            ></i>
+          </div>
+          <div class="col">
+            <div class="row"><h6>Densidad de personas</h6></div>
+            <div class="row">
+              <div class="col">Poca cantidad de personas en la terminal</div>
+              <div class="col-sm-2">
+                <i class="ri-edit-line" style="color: #75b9e6"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <!-- Seccion 2 -->
+        <div class="row" style="padding-left: 15px; padding-bottom: 25px">
+          <div class="col-sm-1" style="padding-right: 90px">
+            <button
+              onclick="cambiarDiv('anden')"
+              type="button"
+              class="btn btn-primary"
+              style="background-color: #268bcf; border-color: #268bcf"
+            >
+              Andenes
+            </button>
+          </div>
+          <div class="col-sm-1">
+            <button
+              onclick="cambiarDiv('chofer')"
+              type="button"
+              class="btn btn-primary"
+              style="background-color: #75b9e6; border-color: #75b9e6"
+            >
+              Choferes
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="anden"
+          class="list-group"
+          style="padding-left: 15px; padding-right: 15px"
+        >
+          <!-- Anden -->
+          <div class="row" style="padding-left: 15px; padding-bottom: 10px" id="buttonConfirmRutaEliminada">
+
+            <button
+              onclick="window.location.href='admin_anden_parada.html'"
+              type="button"
+              class="btn btn-outline-primary"
+              style="
+                min-width: 70%;
+                text-align: start;
+                border-radius: 12px;
+                border-color: #75b9e6;
+                color: #303030;
+              "
+            >
+              Andén 1 - Ruta: Santa Teresa
+            </button>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 30px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-ruta-edit">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-edit-line"
+                    style="color: #75b9e6; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 35px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-ruta-eliminar">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-delete-bin-line"
+                    style="color: red; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- Anden -->
+          <div class="row" style="padding-left: 15px; padding-bottom: 10px">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              style="
+                min-width: 70%;
+                text-align: start;
+                border-radius: 12px;
+                border-color: #75b9e6;
+                color: #303030;
+              "
+            >
+              Andén 2 - Ruta: Charallave
+            </button>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 30px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-ruta-edit">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-edit-line"
+                    style="color: #75b9e6; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 35px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-ruta-eliminar">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-delete-bin-line"
+                    style="color: red; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- Anden -->
+          <div class="row" style="padding-left: 15px; padding-bottom: 10px">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              style="
+                min-width: 70%;
+                text-align: start;
+                border-radius: 12px;
+                border-color: #75b9e6;
+                color: #303030;
+              "
+            >
+              Andén 3 - Ruta: Los Teques
+            </button>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 30px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-ruta-edit">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-edit-line"
+                    style="color: #75b9e6; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 35px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-ruta-eliminar">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-delete-bin-line"
+                    style="color: red; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- Anden -->
+          <div class="row" style="padding-left: 15px; padding-bottom: 10px">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              style="
+                min-width: 70%;
+                text-align: start;
+                border-radius: 12px;
+                border-color: #75b9e6;
+                color: #303030;
+              "
+            >
+              Andén 4 - Ruta: El Junquito
+            </button>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 30px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-ruta-edit">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-edit-line"
+                    style="color: #75b9e6; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 35px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-ruta-eliminar">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-delete-bin-line"
+                    style="color: red; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- Agregar -->
+          <form action="#popup-ruta-crear">
+            <button
+              class="btn btn-outline-primary"
+              style="
+                min-width: 95%;
+                text-align: center;
+                border-radius: 12px;
+                border-color: #75b9e6;
+                color: #303030;
+              "
+            >
+              <i
+                class="ri-add-line"
+                style="font-size: 15px; color: #75b9e6"
+              ></i>
+            </button>
+          </form>
+        </div>
+        <div
+          id="chofer"
+          class="list-group"
+          style="padding-left: 15px; padding-right: 15px"
+        >
+          <!-- chofer -->
+          <div class="row" style="padding-left: 15px; padding-bottom: 10px">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              style="
+                min-width: 70%;
+                text-align: start;
+                border-radius: 12px;
+                border-color: #75b9e6;
+                color: #303030;
+              "
+            >
+              Krilin Carrillo
+            </button>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 30px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-chofer-edit">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-edit-line"
+                    style="color: #75b9e6; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 35px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-chofer-eliminar">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-delete-bin-line"
+                    style="color: red; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- chofer -->
+          <div class="row" style="padding-left: 15px; padding-bottom: 10px" id="buttonConfirmChoferEliminado">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              style="
+                min-width: 70%;
+                text-align: start;
+                border-radius: 12px;
+                border-color: #75b9e6;
+                color: #303030;
+              "
+            >
+              Benito Antonio Martinez
+            </button>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 30px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-chofer-edit">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-edit-line"
+                    style="color: #75b9e6; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 35px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-chofer-eliminar">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-delete-bin-line"
+                    style="color: red; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- chofer -->
+          <div class="row" style="padding-left: 15px; padding-bottom: 10px">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              style="
+                min-width: 70%;
+                text-align: start;
+                border-radius: 12px;
+                border-color: #75b9e6;
+                color: #303030;
+              "
+            >
+              Eladio Carreón
+            </button>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 30px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-chofer-edit">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-edit-line"
+                    style="color: #75b9e6; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 35px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-chofer-eliminar">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-delete-bin-line"
+                    style="color: red; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- chofer -->
+          <div class="row" style="padding-left: 15px; padding-bottom: 10px">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              style="
+                min-width: 70%;
+                text-align: start;
+                border-radius: 12px;
+                border-color: #75b9e6;
+                color: #303030;
+              "
+            >
+              Don Gojo
+            </button>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 30px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-chofer-edit">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-edit-line"
+                    style="color: #75b9e6; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+            <div
+              class="col-sm-1"
+              style="
+                padding-left: 35px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+              "
+            >
+              <form action="#popup-chofer-eliminar">
+                <button class="btn btn-outline-light">
+                  <i
+                    class="ri-delete-bin-line"
+                    style="color: red; font-size: 20px"
+                  ></i>
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- Agregar -->
+          <form action="#popup-chofer-crear">
+            <button
+              class="btn btn-outline-primary"
+              style="
+                min-width: 95%;
+                text-align: center;
+                border-radius: 12px;
+                border-color: #75b9e6;
+                color: #303030;
+              "
+            >
+              <i
+                class="ri-add-line"
+                style="font-size: 15px; color: #75b9e6"
+              ></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <button id="sidebtn" class="sidebar-btn sidebar-visible float">
+        <div id="rotate">
+          <i class="ri-arrow-left-s-line rotate-arrow"></i>
+        </div>
+      </button>
+    </div>
+
+    <iframe
+      id="mapa"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1961.498259412932!2d-66.91153074421328!3d10.500939665887358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5ed692b1b0d5%3A0xb54067fd5faaa2be!2sTerminal%20de%20Pasajeros%20Nuevo%20Circo!5e0!3m2!1ses!2sve!4v1740937144692!5m2!1ses!2sve"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+
+    <!-- Botones izq -->
+    <button id="center-btn" class="float-left">
+      <i
+        onclick="reloadFrame()"
+        class="ri-map-pin-2-line"
+        style="color: white"
+      ></i>
+    </button>
+    <form action="index.html" method="get">
+      <button
+        type="submit"
+        id="logout-btn"
+        class="float-left"
+        style="top: 25px !important"
+      >
+        <i class="ri-arrow-left-circle-line" style="color: white"></i>
+      </button>
+    </form>
+
+    <!-- Popups -->
+    <!-- Popups rutas -->
+    <div id="popup-ruta-edit" class="overlay">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Editar ruta</h4>
+          </div>
+          <hr />
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Nombre</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="Nombre"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Trayecto</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="Informacion de trayecto"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Anden</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="Anden 1"
+                    readonly
+                  />
+                </div>
+              </div>
+              <div
+                class="row"
+                style="display: flex; justify-content: center; padding: 5px"
+              >
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  style="
+                    text-align: center;
+                    border-radius: 12px;
+                    border-color: #75b9e6;
+                    color: #303030;
+                  "
+                >
+                  <i
+                    class="ri-add-line"
+                    style="font-size: 15px; color: #75b9e6"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Paradas</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="Traki"
+                    readonly
+                  />
+                </div>
+              </div>
+              <div
+                class="row"
+                style="display: flex; justify-content: center; padding: 5px"
+              >
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  style="
+                    text-align: center;
+                    border-radius: 12px;
+                    border-color: #75b9e6;
+                    color: #303030;
+                  "
+                >
+                  <i
+                    class="ri-add-line"
+                    style="font-size: 15px; color: #75b9e6"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Chofer</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="Don Gojo"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="admin_home.html" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #f9c24e;
+                      color: #303030;
+                    "
+                  >
+                    Cancelar
+                  </button>
+                </form>
+              </div>
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#popup-ruta-guardar" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Guardar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-ruta-guardar" class="overlay light">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Editar ruta</h4>
+          </div>
+          <hr />
+          <div class="row" style="display: flex; justify-content: center">
+            ¿Desea guardar los cambios?
+          </div>
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #f9c24e;
+                      color: #303030;
+                    "
+                  >
+                    Cancelar
+                  </button>
+                </form>
+              </div>
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#popup-ruta-guardar-exito" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Guardar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-ruta-guardar-exito" class="overlay light">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Editar ruta</h4>
+          </div>
+          <hr />
+          <div class="row" style="display: flex; justify-content: center">
+            Ruta editada con éxito.
+          </div>
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Aceptar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-ruta-crear" class="overlay">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Crear ruta</h4>
+          </div>
+          <hr />
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Nombre</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="Nombre"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Trayecto</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="Informacion de trayecto"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px" id="emergency">
+            <div class="col">
+              <div class="row">Anden</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="Anden 1"
+                    readonly
+                  />
+                </div>
+              </div>
+              <div
+                class="row"
+                style="display: flex; justify-content: center; padding: 5px"
+              >
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  style="
+                    text-align: center;
+                    border-radius: 12px;
+                    border-color: #75b9e6;
+                    color: #303030;
+                  "
+                >
+                  <i
+                    class="ri-add-line"
+                    style="font-size: 15px; color: #75b9e6"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div
+                class="row"
+                style="display: flex; justify-content: center; padding: 5px"
+              >
+  
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px" id="emergency2">
+            <div class="col">
+              <div class="row">Chofer</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="Don Gojo"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="emergency3">
+            Atención: Las paradas son creadas luego de crear la ruta.
+          </div>
+
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="admin_home.html" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #f9c24e;
+                      color: #303030;
+                    "
+                  >
+                    Cancelar
+                  </button>
+                </form>
+              </div>
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#popup-ruta-crear-guardar" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Crear
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-ruta-crear-guardar" class="overlay light">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Crear ruta</h4>
+          </div>
+          <hr />
+          <div class="row" style="display: flex; justify-content: center">
+            ¿Desea crear nueva ruta?
+          </div>
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #f9c24e;
+                      color: #303030;
+                    "
+                  >
+                    Cancelar
+                  </button>
+                </form>
+              </div>
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    onclick="toggleButtonAddRuta()"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Crear
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-ruta-crear-exito" class="overlay light">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Crear ruta</h4>
+          </div>
+          <hr />
+          <div class="row" style="display: flex; justify-content: center">
+            Ruta Creada con éxito.
+          </div>
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Aceptar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-ruta-eliminar" class="overlay light">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>¿Eliminar ruta?</h4>
+          </div>
+          <hr />
+          <div class="row" style="display: flex; justify-content: center">
+            ¿Desea eliminar esta ruta?
+          </div>
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #f9c24e;
+                      color: #303030;
+                    "
+                  >
+                    Cancelar
+                  </button>
+                </form>
+              </div>
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#popup-ruta-eliminar-exito" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    onclick="toggleButtonDeleteRuta()"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: red;
+                      color: #303030;
+                    "
+                  >
+                    Eliminar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-ruta-eliminar-exito" class="overlay light">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Eliminar ruta</h4>
+          </div>
+          <hr />
+          <div class="row" style="display: flex; justify-content: center">
+            Ruta eliminada con éxito.
+          </div>
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Aceptar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popups Chofers -->
+
+    <div id="popup-chofer-edit" class="overlay">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Editar información del Chofer</h4>
+          </div>
+          <hr />
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Nombre</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="Nombre"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Cedula</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="V-3543562"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Ruta</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="Santa Teresa"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Unidad de transporte - Identificación</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="FAF028"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="admin_home.html" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #f9c24e;
+                      color: #303030;
+                    "
+                  >
+                    Cancelar
+                  </button>
+                </form>
+              </div>
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#popup-chofer-guardar" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Guardar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-chofer-guardar" class="overlay light">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Editar chofer</h4>
+          </div>
+          <hr />
+          <div class="row" style="display: flex; justify-content: center">
+            ¿Desea guardar los cambios?
+          </div>
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #f9c24e;
+                      color: #303030;
+                    "
+                  >
+                    Cancelar
+                  </button>
+                </form>
+              </div>
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#popup-chofer-guardar-exito" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Guardar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-chofer-guardar-exito" class="overlay light">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Editar chofer</h4>
+          </div>
+          <hr />
+          <div class="row" style="display: flex; justify-content: center">
+            Chofer editado con éxito.
+          </div>
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Aceptar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-chofer-crear" class="overlay">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Registrar Chofer</h4>
+          </div>
+          <hr />
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Nombre</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="Nombre"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Cedula</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="V-XXXXXXX"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Ruta</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="ruta"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px">
+            <div class="col">
+              <div class="row">Unidad de transporte - Identificación</div>
+              <div class="row">
+                <div id="name" class="col" style="padding: 0px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="
+                      min-width: 100%;
+                      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                      max-width: 35%;
+                      border-color: #75b9e6;
+                      border-radius: 12px;
+                    "
+                    placeholder="Asignar"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="admin_home.html" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #f9c24e;
+                      color: #303030;
+                    "
+                  >
+                    Cancelar
+                  </button>
+                </form>
+              </div>
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#popup-chofer-crear-guardar" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Registrar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-chofer-crear-guardar" class="overlay light">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Registrar chofer</h4>
+          </div>
+          <hr />
+          <div class="row" style="display: flex; justify-content: center">
+            ¿Desea registrar este chofer?
+          </div>
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #f9c24e;
+                      color: #303030;
+                    "
+                  >
+                    Cancelar
+                  </button>
+                </form>
+              </div>
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#popup-chofer-crear-exito" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    onclick="toggleButtonAddChofer()"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Guardar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-chofer-crear-exito" class="overlay light">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Registrar chofer</h4>
+          </div>
+          <hr />
+          <div class="row" style="display: flex; justify-content: center">
+            Chofer registrado con éxito.
+          </div>
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Aceptar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-chofer-eliminar" class="overlay light">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>¿Eliminar chofer?</h4>
+          </div>
+          <hr />
+          <div class="row" style="display: flex; justify-content: center">
+            ¿Desea eliminar este chofer?
+          </div>
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #f9c24e;
+                      color: #303030;
+                    "
+                  >
+                    Cancelar
+                  </button>
+                </form>
+              </div>
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#popup-chofer-eliminar-exito" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    onclick="toggleButtonDeleteChofer()"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: red;
+                      color: #303030;
+                    "
+                  >
+                    Eliminar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-chofer-eliminar-exito" class="overlay light">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Eliminar chofer</h4>
+          </div>
+          <hr />
+          <div class="row" style="display: flex; justify-content: center">
+            Chofer eliminado con éxito.
+          </div>
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Aceptar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-admin" class="overlay light">
+      <a class="cancel" href="#"></a>
+      <div
+        class="popup"
+        style="
+          min-width: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div class="col" style="max-width: 80%">
+          <div class="row" style="display: flex; justify-content: center">
+            <h4>Inicio de sesión</h4>
+          </div>
+          <hr />
+          <div class="row" style="display: flex; justify-content: center">
+            Ahora eres administrador.
+          </div>
+          <div class="row" style="display: flex; justify-content: center">
+            <div
+              class="row"
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-around;
+              "
+            >
+              <div
+                class="col-sm-1"
+                style="display: flex; justify-content: center"
+              >
+                <form action="#" method="get">
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    style="
+                      text-align: center;
+                      border-radius: 12px;
+                      border-color: #75b9e6;
+                      color: #303030;
+                    "
+                  >
+                    Aceptar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
