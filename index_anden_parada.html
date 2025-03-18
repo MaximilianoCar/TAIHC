@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="js/code.js"></script>
+    <title>RuVen Maps</title>
+</head>
+<body style="background-color: antiquewhite;">
+    <!-- Barra de busqueda -->
+    <div class="floating-search-bar">
+        <div class="search-bar">
+            <i class="ri-search-line"  style="font-size: 20px; color: #75B9E6;"></i>
+            <input id="search-input" type="text" placeholder="Buscar...">
+        </div>
+        <div class="suggestion-box">
+            <ul>
+              <li class="suggestion"><button onclick="window.location.href='index_anden.html'" type="button" class="btn btn-outline-primary" style="text-align: start;  width: 100%; margin-bottom: 10px; border-radius: 12px; border-color: #75B9E6; color: #303030;"><i class="ri-bus-line" style="color: #75B9E6;"></i>Andén 1 - Ruta: Santa Teresa</button></li>
+              <li class="suggestion"><button onclick="window.location.href='index_anden2.html'" type="button" class="btn btn-outline-primary" style="text-align: start; width: 100%; margin-bottom: 10px; border-radius: 12px; border-color: #75B9E6; color: #303030;"><i class="ri-bus-line" style="color: #75B9E6;"></i>Andén 2 - Ruta: Charallave</button></li>
+              <li class="suggestion"><button onclick="window.location.href='index_anden3.html'" type="button" class="btn btn-outline-primary" style="text-align: start; width: 100%; margin-bottom: 10px; border-radius: 12px; border-color: #75B9E6; color: #303030;"><i class="ri-bus-line" style="color: #75B9E6;"></i>Andén 5 - Ruta: Guarenas</button></li>
+            </ul>
+          </div>
+    </div>
+
+    <div class="sidecont">
+        <div id="sidebar" class="sidebar-visible">
+            <div id="sidebartitle"><h3 style="padding: 15px; padding-left: 20px;">Terminal de pasajeros: Nuevo Circo</h3></div>
+            <hr><!-- Seccion 1 -->
+                <div class="row" style="padding-left: 15px; padding-bottom: 10px;">
+                    <div class="col" style="max-width: 80%;">
+                        <h4 style="padding-left: 10px;">
+                            <i
+                                type="button"
+                                onclick="window.location.href='index_anden.html'"
+                                class="ri-arrow-left-s-line"
+                                style="font-size: 24px; color: #75b9e6; margin-right: 10px"
+                            ></i>
+                            Andén 1 - Ruta: Santa Teresa </h4> </div>
+                    <div class="col-sm-1"><a class="close" href="index.html"><i class="ri-close-large-line"></i></a></a></div>
+                </div>
+                <div class="row" style="padding-left: 15px; padding-bottom: 10px;">
+                    <i class="ri-bus-line" style="font-size: 35px; color: #75B9E6; padding-left: 10px;"></i><h5 style="display: flex; align-content: center; flex-wrap: wrap;">Unidades de transporte </h5>
+                </div>
+                <!-- Descripcion item -->
+                <div class="row" style="padding-left: 45px; padding-bottom: 5px;">
+                    <div class="col-sm-1" style="display: grid; align-items: center; padding: 5px;">
+                        <i class="ri-bus-line" style="font-size: 35px;"></i>
+                    </div>
+                    <div class="col">
+                        <div class="row">Autobús F0A01 - Conductor Naruto Colina</div>
+                        <div class="row">5:00 A.M - 6:00 A.M </div>
+                    </div>
+                </div>
+                <!-- Descripcion item -->
+                <div class="row" style="padding-left: 45px; ">
+                    <div class="col-sm-1" style="display: grid; align-items: center; padding: 5px; ">
+                        <i class="ri-bus-line" style="font-size: 35px;"></i>
+                    </div>
+                    <div class="col">
+                        <div class="row">Autobús 0F016 - Conductor Benito Antonio Martínez</div>
+                        <div class="row">7:00 A.M - 8:00 A.M </div>
+                    </div>
+                </div>
+                <!-- Descripcion item -->
+                <div class="row" style="padding-left: 45px; ">
+                    <div class="col-sm-1" style="display: grid; align-items: center; padding: 5px; ">
+                        <i class="ri-bus-line" style="font-size: 35px;"></i>
+                    </div>
+                    <div class="col">
+                        <div class="row">Autobús E0G01 - Conductor Eladio Carrión </div>
+                        <div class="row">5:00 A.M - 6:00 A.M </div>
+                    </div>
+                </div>
+                <!-- Descripcion item -->
+                <div class="row" style="padding-left: 45px; ">
+                    <div class="col-sm-1" style="display: grid; align-items: center; padding: 5px; ">
+                        <i class="ri-bus-line" style="font-size: 35px;"></i>
+                    </div>
+                    <div class="col">
+                        <div class="row">Autobús AFK16 - Conductor Don Gojo </div>
+                        <div class="row">9:00 P.M - 10:00 P.M </div>
+                    </div>
+                </div>
+            <hr><!-- Seccion 2 -->
+            <div class="row" style="padding-left: 15px; padding-bottom: 10px;">
+                <i class="ri-bus-line" style="font-size: 35px; color: #75B9E6; padding-left: 10px;"></i><h5 style="display: flex; align-content: center; flex-wrap: wrap;">Paradas</h5>
+            </div>
+            <div class="list-group" style=" padding-left: 15px; padding-right: 15px;">
+                <button onclick="window.location.href='index_anden.html'" type="button" class="btn btn-outline-primary" style="text-align: start; margin-bottom: 10px; border-radius: 12px; border-color: #75B9E6; color: #303030;">
+                    <div class="row" style=" padding: 15px;">
+                        <div class="col" style="max-width: 80%;">
+                            <div class="row"><i class="ri-bus-line" style="font-size: 20px;"></i>Parada: Traki</div>
+                            <div class="row">Parada traki ubicada en la transversal de chacaito,
+                                calle Helice, a altura del Traki</div>
+                        </div>
+                        <div class="col" style=" max-width: 25%;">
+                            <div id="Imagen" class="row" style="display: flex; align-items: center; justify-content: center;"><img src="img/parada.png" alt="logo" style=" border-radius: 12px; max-width: 80%; max-height: 80%;"></div>
+                        </div>
+                    </div>
+                </button>
+                <button type="button" class="btn btn-outline-primary" style="text-align: start; margin-bottom: 10px; border-radius: 12px; border-color: #75B9E6; color: #303030;"><i class="ri-bus-line" style="font-size: 20px;"></i>Parada: Sambil la Candelaria</button>
+            </div>
+        </div>
+        <button id="sidebtn" class="sidebar-btn sidebar-visible float">
+            <div id="rotate">
+                <i class="ri-arrow-left-s-line rotate-arrow"></i>
+            </div>
+        </button>
+    </div>
+
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d125589.46152443317!2d-66.8659486381665!3d10.36819517640994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x8c2a5ed692b1b0d5%3A0xb54067fd5faaa2be!2sTerminal%20de%20Nuevo%20Circo%2C%20Avenida%20Bol%C3%ADvar%2C%20Caracas%2C%20Capital%20District!3m2!1d10.500799899999999!2d-66.91075289999999!4m5!1s0x8c2ae2e12072b807%3A0x50919825e72784e9!2s68WQ%2B2PV%20Terminal%20De%20Pasajeros%20De%20Santa%20Teresa%2C%20Unnamed%20Road%2C%2C%20Santa%20Teresa%2C%20Miranda!3m2!1d10.2451249!2d-66.6607167!5e0!3m2!1ses!2sve!4v1742149646748!5m2!1ses!2sve" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+    <!-- Botones izq -->
+    <button id="center-btn" class="float-left" >
+        <i onclick="reloadFrame()" class="ri-map-pin-2-line" style="color: white; "></i>
+    </button>
+    <form action="#popup-user">
+        <button id="login-btn" class="float-left" style="top: 25px !important;">
+        <i class="ri-user-3-line" style="color: white; "></i>
+        </button>
+    </form>
+    
+    <form action="#popup-ayuda">
+        <button id="help-btn" class="float-left" style="top: 85px !important;">
+            <i class="ri-information-line" style="color: white;"></i>
+        </button>
+    </form>
+    
+
+
+    <!-- Popups -->
+     <!-- Ayuda -->
+     <div id="popup-ayuda" class="overlay light">
+        <a class="cancel" href="#"></a>
+        <div class="popup">
+            <h2>Necesitas ayuda?</h2>
+            <div class="content">
+          <p>Puedes contactarte al 0212.XXXXXXX para mas información.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Login -->
+    <div id="popup-user" class="overlay">
+        <div class="popup">
+            <h4 style="color: #75B9E6; display: flex; justify-content: center;">Inicio de sesión de administrador </h4> <a class="close" href="#">&times;</a>
+
+            <div class="container" style="padding: 30px;">
+                <div class="col">
+                    <div id="Imagen" class="row" style="display: flex; align-items: center; justify-content: center;"><img src="img/RuVenMapsFinal.png" alt="logo" style="max-width: 20%; max-height: 20%;"></div>
+                </div>
+                <div class="col" style="padding-top: 15px; padding-bottom: 15px;">
+                    <div id="text" class="row" style="display: flex; align-items: center; justify-content: center;"><h4 style="color: #268BCF;">¡Bienvenido!</h4></div>
+                </div>
+                <div class="col" style="padding-top: 15px; padding-bottom: 15px;">
+                    <div id="user" class="row" style="display: flex; align-items: center; justify-content: center;">
+                        <input type="text" class="form-control" style="box-shadow: 0 2px 10px rgba(0,0,0,0.2); max-width: 35%; border-color: #75B9E6; border-radius: 12px;" placeholder="Usuario">
+                    </div>
+                </div>
+                <div class="col" style="padding-top: 15px; padding-bottom: 15px;">
+                    <div id="pass" class="row" style="display: flex; align-items: center; justify-content: center;">
+                        <input type="text" class="form-control" style="box-shadow: 0 2px 10px rgba(0,0,0,0.2); max-width: 35%; border-color: #75B9E6; border-radius: 12px;" placeholder="Contraseña">
+                    </div>
+                </div>
+                <div class="col" style="padding-top: 15px; padding-bottom: 15px;">
+                    <div id="pass" class="row" style="display: flex; align-items: center; justify-content: center;">
+                        <form action="admin_home.html#popup-admin" method="get">
+                            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col" style="padding-top: 35px; padding-bottom: 15px;">
+                    <div id="contra" class="row" style="display: flex; align-items: center; justify-content: center;">
+                        <h6 style="color: #75B9E6;">Olvidaste la contraseña?</h6>
+                    </div>
+                </div>
+                <div class="col" style="padding-top: 15px; padding-bottom: 15px;">
+                    <div id="contra" class="row" style="display: flex; align-items: center; justify-content: center;">
+                        <h6 style="color: #75B9E6;">No eres administrador?</h6>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
